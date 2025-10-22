@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
+
+@import "tailwindcss";
+
+@theme{
+  --color-primary:#F84565;
+  --color-primary-dull: #D63854;
+
+}
+
+ *{
+  font-family: "Outfit", sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: #787777 #1e1e1e;
+}
+
+body{
+  color:white;
+  background-color: #09090B;
+
+}
+
+.no-scrollbar{
+  scrollbar-width: none;
+}
+
+/* price input in ADD Shows show up down icon so to remove it do this=>*/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  -webkit-appearance:none;
+}
+
+/*Show calender icon in ADDShows.jsx in side of add show button =>*/
+
+::-webkit-calendar-picker-indicator{
+  filter: invert(1);
+}
+
