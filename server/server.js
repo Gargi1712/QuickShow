@@ -16,7 +16,8 @@ const port=5000;
 await connectDB()
 
 //Stripe Webhooks Route
-app.post('/api/stripe',express.raw({type:'application/json'}),stripeWebhooks)
+//Stripe Webhooks Route (explicit POST and raw body for signature verification)
+app.use('/api/stripe', express.raw({ type: 'application/json' }), stripeWebhooks)
 
 //Middleware
 app.use(express.json())
