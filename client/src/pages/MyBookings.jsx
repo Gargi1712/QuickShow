@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Loading from '../components/Loading'
 import BlurCircle from '../components/BlurCircle'
-import { dummyBookingData } from '../assets/assets'
+// import { dummyBookingData } from '../assets/assets'
 import timeFormat from '../lib/timeFormat'
 import { dateFormat } from '../lib/dateFormat'
 import { useAppContext } from '../context/Appcontext'
+import { Link } from 'react-router-dom'
 
 function MyBookings() {
   const currency=import.meta.env.VITE_CURRENCY
@@ -35,6 +36,7 @@ function MyBookings() {
     }  
   },[user])
 
+
   return !isLoading?(
     <div className='relative px-6 md:px-16 lg:px-40 pt-30 md:pt-40 min-h-[80vh]'>
       <BlurCircle top="100px"  left="100px" />
@@ -63,7 +65,7 @@ function MyBookings() {
             <div className='flex flex-col md:items-end md:text-right justify-between p-4'>
               <div className='flex items-center gap-4'>
                 <p className='text-2xl font-semibold mb-3'>{currency}{item.amount}</p>
-                {!item.isPaid && <button className='bg-primary px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer'>Pay Now</button>}
+                {!item.isPaid && item.paymentLink && <Link to={item.paymentLink} className='bg-primary px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer'>Pay Now</Link >}
               </div>
               <div className='text-sm'>
                 <p><span className='text-gray-400'>Total Tickets:</span>{item.bookedSeats.length}</p>
@@ -80,10 +82,6 @@ function MyBookings() {
     <Loading />
   )
 
-  return (
-    <div>
-
-    </div>
-  )
+  
 }
 export default MyBookings
